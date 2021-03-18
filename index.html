@@ -8,26 +8,19 @@
     <title>Title</title>
 </head>
 <body>
-    <div class="content">
+    <div class="content center">
         <div class="content__header">
             <h1>Рейтинг пользователей:</h1>
-            <button class="content__header_sortButton">
-                <img src="img/sort.png" alt="sort">
-            </button>
-        </div>
-        <a href="#" class="content__link">
-            <div class="content__main">
-                <div class="content__avatar"></div>
-                <div class="content__initials">
-                    <h3>Пользователь:</h3>
-                    <p>Clementine Bauch</p>
-                </div>
-                <div class="content__rating">
-                    <img src="img/star.png" alt="rating_star">
-                    <p class="content__rating_value">67</p>
-                </div>
+            <div class="content__header_sortButton">
+                <button class="content__header_sortToLowerButton btn" id="sortToLowBtn">
+                    <img src="img/sort.png" alt="sort">
+                </button>
+                <button class="content__header_sortToHigherButton btn" id="sortToHighBtn">
+                    <img src="img/sort.png" alt="sort">
+                </button>
             </div>
-        </a>
+        </div>
+        <div class="content__main" id="mainContent"></div>
     </div>
 
     <script src="js/script.js"></script>
