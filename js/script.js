@@ -3,6 +3,7 @@ const url = 'https://my-json-server.typicode.com/Vespand/crmm-tasks/users';
 const arr = [];
 const toHighArr = [];
 const toLowArr = [];
+const mainContent = document.getElementById('mainContent')
 
 
 
@@ -19,21 +20,10 @@ let json = function (response) {
 fetch(url)
     .then(status)
     .then(json)
-/*    .then(function (data) {
-            for(let i = 0; i < data.length; i++) {
-                arr.push(data[i])
-                render()
-            }
-        }
-    )*/
     .then(function(data) {
         arr.push(data)
+        clear();
         render(data)
-        setTimeout(() => {
-            let low  = data.sort((a, b) => a.rating > b.rating ? 1 : -1);
-            low.push(toLowArr)
-        },1)
-        console.log(data)
     })
     .catch(function (error) {
         console.log('error', error)
@@ -41,26 +31,19 @@ fetch(url)
 
 function render(data) {
     data.forEach(function (arrayItem) {
-        let id = arrayItem.id;
-        let name = arrayItem.name;
-        let description = arrayItem.description;
-        let avatar = arrayItem.avatar;
-        let rating = arrayItem.rating;
-        let idx = arr.indexOf(arrayItem) + 1;
-        let mainContent = document.getElementById('mainContent')
         let div =
             `
                     <div class="content__wrapper flex" id="contentWrapper">
                         <div class="flex">
-                            <div class="content__avatar" style="background: url(${avatar}) center no-repeat; background-size: cover;"></div>
+                            <div class="content__avatar" style="background: url(${arrayItem.avatar}) center no-repeat; background-size: cover;"></div>
                                 <div class="content__initials">
                                     <h3>Пользователь:</h3>
-                                    <p>${name}</p>
+                                    <p>${arrayItem.name}</p>
                             </div>
                         </div>
                         <div class="content__rating">
                             <img src="img/star.png" alt="rating_star">
-                            <p class="content__rating_value">${rating}</p>
+                            <p class="content__rating_value">${arrayItem.rating}</p>
                         </div>
                     </div>
                 `;
@@ -71,9 +54,113 @@ function render(data) {
 
 const sortToHighBtn = document.getElementById('sortToHighBtn');
 const sortToLowBtn = document.getElementById('sortToLowBtn');
+/*sortToHighBtn.addEventListener('click', function () {
+    {
+        const toHigh = [];
+        let sort = arr[0].sort((a, b) => a.rating > b.rating ? 1 : -1);
+        clear();
+        renderToHigh(sort)
+        function renderToHigh(sort) {
+            sort.forEach(function (arrayItem) {
+                mainContent.insertAdjacentHTML('afterbegin',
+                    `
+                    <div class="content__wrapper flex" id="contentWrapper">
+                        <div class="flex">
+                            <div class="content__avatar" style="background: url(${arrayItem.avatar}) center no-repeat; background-size: cover;"></div>
+                                <div class="content__initials">
+                                    <h3>Пользователь:</h3>
+                                    <p>${arrayItem.name}</p>
+                            </div>
+                        </div>
+                        <div class="content__rating">
+                            <img src="img/star.png" alt="rating_star">
+                            <p class="content__rating_value">${arrayItem.rating}</p>
+                        </div>
+                    </div>
+                `)
 
-// function sortToLow(data) {
-//     data.sort((a, b) => a.rating > b.rating ? 1 : -1);
-//     render(data);
-// }
+            })
+        }
+    }
+})*/
 
+/*sortToLowBtn.addEventListener('click', function () {
+    {
+        const toLow = [];
+        let sort = arr[0].sort((a, b) => a.rating < b.rating ? 1 : -1);
+        clear();
+        renderToHigh(sort)
+        // toHigh.push(sort)
+        // console.log(toHigh[0])
+        function renderToHigh(sort) {
+            sort.forEach(function (arrayItem) {
+                // let mainContent = document.getElementById('mainContent')
+                // let div =
+                mainContent.insertAdjacentHTML('afterbegin',
+                    `
+                    <div class="content__wrapper flex" id="contentWrapper">
+                        <div class="flex">
+                            <div class="content__avatar" style="background: url(${arrayItem.avatar}) center no-repeat; background-size: cover;"></div>
+                                <div class="content__initials">
+                                    <h3>Пользователь:</h3>
+                                    <p>${arrayItem.name}</p>
+                            </div>
+                        </div>
+                        <div class="content__rating">
+                            <img src="img/star.png" alt="rating_star">
+                            <p class="content__rating_value">${arrayItem.rating}</p>
+                        </div>
+                    </div>
+                `)
+
+            })
+        }
+    }
+})*/
+
+sortToHighBtn.addEventListener('click', function () {
+    {
+        const toHigh = [];
+        function sort (){
+                        let flag = true  // создаём флаг
+                            ,   predicates = {
+                                'asc' : function(a, b){ return (a.rating>b.rating) - (b.rating>a.rating) }
+                            ,   'desc': function(a, b){ return (a.rating<b.rating) - (b.rating<a.rating) }
+                        }
+                        return function(arr){
+                            flag = !flag // который при каждом вызове переключаем
+                            arr.sort(predicates[flag ? 'asc' : 'desc'])
+                            // и сортируем в зависимости от его значения
+                        }
+                    }
+                    sort(arr[0])
+        console.log(arr[0])
+        clear();
+        // renderToHigh(sort)
+        /*function renderToHigh(sort) {
+            sort.forEach(function (arrayItem) {
+                mainContent.insertAdjacentHTML('afterbegin',
+                    `
+                    <div class="content__wrapper flex" id="contentWrapper">
+                        <div class="flex">
+                            <div class="content__avatar" style="background: url(${arrayItem.avatar}) center no-repeat; background-size: cover;"></div>
+                                <div class="content__initials">
+                                    <h3>Пользователь:</h3>
+                                    <p>${arrayItem.name}</p>
+                            </div>
+                        </div>
+                        <div class="content__rating">
+                            <img src="img/star.png" alt="rating_star">
+                            <p class="content__rating_value">${arrayItem.rating}</p>
+                        </div>
+                    </div>
+                `)
+
+            })
+        }*/
+    }
+})
+
+function clear() {
+    mainContent.innerHTML = '';
+}
