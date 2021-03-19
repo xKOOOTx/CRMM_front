@@ -54,7 +54,7 @@ function render(data) {
 
 const sortToHighBtn = document.getElementById('sortToHighBtn');
 const sortToLowBtn = document.getElementById('sortToLowBtn');
-/*sortToHighBtn.addEventListener('click', function () {
+sortToHighBtn.addEventListener('click', function () {
     {
         const toHigh = [];
         let sort = arr[0].sort((a, b) => a.rating > b.rating ? 1 : -1);
@@ -82,9 +82,9 @@ const sortToLowBtn = document.getElementById('sortToLowBtn');
             })
         }
     }
-})*/
+})
 
-/*sortToLowBtn.addEventListener('click', function () {
+sortToLowBtn.addEventListener('click', function () {
     {
         const toLow = [];
         let sort = arr[0].sort((a, b) => a.rating < b.rating ? 1 : -1);
@@ -116,9 +116,9 @@ const sortToLowBtn = document.getElementById('sortToLowBtn');
             })
         }
     }
-})*/
+})
 
-sortToHighBtn.addEventListener('click', function () {
+/*sortToHighBtn.addEventListener('click', function () {
     {
         const toHigh = [];
         function sort (){
@@ -137,7 +137,7 @@ sortToHighBtn.addEventListener('click', function () {
         console.log(arr[0])
         clear();
         // renderToHigh(sort)
-        /*function renderToHigh(sort) {
+        /!*function renderToHigh(sort) {
             sort.forEach(function (arrayItem) {
                 mainContent.insertAdjacentHTML('afterbegin',
                     `
@@ -157,9 +157,9 @@ sortToHighBtn.addEventListener('click', function () {
                 `)
 
             })
-        }*/
+        }*!/
     }
-})
+})*/
 
 function clear() {
     mainContent.innerHTML = '';

@@ -98,7 +98,7 @@ a {
 }
 
 .modal {
-  display: block;
+  display: none;
   position: absolute;
   padding: 27px 24px 21px 29px;
   top: 50%;
