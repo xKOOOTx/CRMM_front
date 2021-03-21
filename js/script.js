@@ -117,7 +117,6 @@ const sortToLowBtn = document.getElementById('sortToLowBtn');
 sortToHighBtn.addEventListener('click', () => {
     sortToLowBtn.classList.toggle('displayNone');
     sortToHighBtn.classList.toggle('displayNone');
-    console.log('clicked to high');
     let reversedArr = arr[0].reverse();
     clear();
     renderToHigh(reversedArr);
@@ -180,7 +179,6 @@ sortToHighBtn.addEventListener('click', () => {
                     const modalWindowWrapper = modalWindow.querySelector('.modal__wrapper');
                     const closeBtn = document.getElementById('closeBtn');
 
-                    console.log(arrayItem.id)
                     modalWindowWrapper.addEventListener('click', event => {
                         event.stopPropagation();
                     })
@@ -204,9 +202,7 @@ sortToHighBtn.addEventListener('click', () => {
 sortToLowBtn.addEventListener('click', () => {
     sortToLowBtn.classList.toggle('displayNone');
     sortToHighBtn.classList.toggle('displayNone');
-    console.log('clicked to low');
     let data = arr[0]
-    // console.log(arr[0])
     clear()
     renderToLow(data);
 
@@ -269,7 +265,6 @@ sortToLowBtn.addEventListener('click', () => {
                     const modalWindowWrapper = modalWindow.querySelector('.modal__wrapper');
                     const closeBtn = document.getElementById('closeBtn');
 
-                    console.log(arrayItem.id)
                     modalWindowWrapper.addEventListener('click', event => {
                         event.stopPropagation();
                     })
