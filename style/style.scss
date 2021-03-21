@@ -1,6 +1,10 @@
 body {
   font-family: 'Lato', sans-serif;
   font-size: 18px;
+
+  &.no-scroll {
+    overflow: hidden;
+  }
 }
 
 * {
@@ -61,7 +65,7 @@ a {
     }
 
     &_sortToHigherButton {
-      transform: scale(-1, -1);
+      transform: scale(1, -1);
     }
   }
 
@@ -109,29 +113,74 @@ a {
 }
 
 .btn {
+  display: block;
   border: 2px solid #2C3E50;
   border-radius: 8px;
 
+  background: #FAFAFA;
   cursor: pointer;
+
+  transition: background .2s linear;
   & img {
     padding: 11px 8px;
     margin: 0 auto;
   }
+  &:hover {
+    background: rgba(#000, .07);
+  }
 }
 
 .modal {
-  display: none;
-  position: absolute;
-  padding: 27px 24px 21px 29px;
-  top: 50%;
-  left: 35%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
   z-index: 2;
-  background: #fff;
+  background: rgba(0, 0, 0, 0.2);
+
+  color: #2C3E50;
+
+
   &__wrapper {
+    min-width: 478px;
+    max-width: 800px;
+    padding: 27px 24px 21px 29px;
+
+    background: #fff;
     &_header {
       display: flex;
       justify-content: space-between;
       padding-bottom: 29px;
+      &_close {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 32px;
+        height: 32px;
+
+        outline: none;
+        border: 1px solid transparent;
+        border-radius: 50%;
+
+        background: #fff;
+
+        transition: background-color .2s linear;
+
+        cursor: pointer;
+
+        &:hover {
+          background: rgba(#000, .07);
+        }
+      }
+      &_text {
+        font-size: 24px;
+        font-weight: 400;
+      }
     }
     &_main {
       display: flex;
@@ -150,9 +199,21 @@ a {
       flex-direction: column;
       padding-right: 97px;
       padding-left: 37px;
+      &_header {
+        font-size: 18px;
+        font-weight: 400;
+      }
+      &_mainText {
+        font-size: 16px;
+        font-weight: 400;
+      }
     }
     &_footer {
       display: grid;
     }
   }
+}
+
+.displayNone {
+  display: none;
 }

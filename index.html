@@ -10,48 +10,20 @@
 <body>
     <div class="content center">
         <div class="content__header">
-            <h1>Рейтинг пользователей:</h1>
+            <h1 data-modal="modal">Рейтинг пользователей:</h1>
             <div class="content__header_sortButton">
                 <button class="content__header_sortToLowerButton btn" id="sortToHighBtn">
                     <img src="img/sort.png" alt="sort">
                 </button>
-                <!--<label for="btnToLower">
-                    <input type="checkbox" id="btnToLower">
-                    <button class="content__header_sortToLowerButton btn" id="sortToHighBtn">
-                        <img src="img/sort.png" alt="sort">
-                    </button>
-                </label>-->
-                <button class="content__header_sortToHigherButton btn" id="sortToLowBtn">
+                <button class="content__header_sortToHigherButton btn displayNone" id="sortToLowBtn">
                     <img src="img/sort.png" alt="sort">
                 </button>
             </div>
         </div>
         <div class="content__main" id="mainContent"></div>
     </div>
-    <div class="modal">
-        <div class="modal__wrapper">
-            <div class="modal__wrapper_header">
-                <div class="modal__wrapper_header_text">Профиль пользователя:</div>
-                <div class="modal__wrapper_header_close">
-                    <img src="img/close_btn.png" alt="close">
-                </div>
-            </div>
-            <div class="modal__wrapper_main">
-                <div class="modal__wrapper_avatar"></div>
-                <div class="modal__wrapper_text">
-                    <span>Имя:</span>
-                    <span>Clementine Bauch</span>
-                    <span>Баллы:</span>
-                    <span>67</span>
-                    <span>Позиция в рейтинге:</span>
-                    <span>1</span>
-                </div>
-            </div>
-            <div class="modal__wrapper_footer">
-                <span>О себе:</span>
-                <span>Не люблю сок.</span>
-            </div>
-        </div>
+    <div class="modal displayNone" id="modal">
+
     </div>
 
     <script src="js/script.js"></script>
